@@ -70,6 +70,14 @@ class SaleOrderHerit(models.Model):
     sale_total_achat = fields.Monetary(string="Total vente", default=0.0, compute="sale_total_achat_func")
     sale_marge_reel = fields.Monetary(default=0.0, string="Marge réelle", compute="sale_marge_reel_fuc")
     sale_date_traitement = fields.Date("Date de traitement",compute="sale_total_date_traitement")
+    
+    ############ dashboard 
+    sale_new_contact = fields.Integer(string="Nouveau client",default=0)
+    @api.onchange("sale_type_client1")
+    def rcuperenewcontact(self):
+        for rec in self:
+            if rec.sale_type_client1 == 'nouveau_client':
+                rec.sale_new_contact = 1
 
     ############ zip street city
     sale_type_client = fields.Selection([('nouveau_client', 'Nouveau client'), ('conversion', 'Conversion'),('additionnel', 'Additionnel')], string='Type de vente')
