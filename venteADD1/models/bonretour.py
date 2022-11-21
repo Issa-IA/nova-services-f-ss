@@ -223,6 +223,10 @@ class SaleOrderbonretour(models.Model):
                                     'picking_type_id': stock_type[0].id,
                                     'stock_sale': rec.id,
                                     'stock_type': 'reception',
+                                    'stock_compteur_depart_Nb':'0',
+                                    'stock_compteur_depart_C':'0',
+                                    'stock_compteur_retour_Nb':'0',
+                                    'stock_compteur_retour_C':'0',
 
                                     }
                             # self.location_dest_id.id
@@ -304,6 +308,10 @@ class SaleOrderbonretour(models.Model):
                                     'picking_type_id': stock_type[3].id,
                                     'stock_sale': rec.id,
                                     'stock_type': 'retour',
+                                    'stock_compteur_depart_Nb':'0',
+                                    'stock_compteur_depart_C':'0',
+                                    'stock_compteur_retour_Nb':'0',
+                                    'stock_compteur_retour_C':'0',
 
                                     }
                             # self.location_dest_id.id
