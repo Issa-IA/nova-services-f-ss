@@ -126,8 +126,8 @@ class Stockpikingretour(models.Model):
     
     stock_compteur_depart_Nb = fields.Char(string="Compteur de départ NB")
     stock_compteur_depart_C = fields.Char(string="Compteur de départ Couleur")
-    stock_compteur_retour_Nb = fields.Char(string="Compteur de départ NB")
-    stock_compteur_retour_C = fields.Char(string="Compteur de départ Couleur")
+    stock_compteur_retour_Nb = fields.Char(string="Compteur de retour NB")
+    stock_compteur_retour_C = fields.Char(string="Compteur de retout Couleur")
     ################
 
 
