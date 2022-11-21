@@ -8,6 +8,26 @@
             <xpath expr="//field[@name='quantity_done']" position ="after">
                  <field name="acount_retour_serie"/>
             </xpath>
+           <xpath expr="//page[@name='operations']" position="after">
+                
+                        <page string="Compteur" name="compteur">
+                            <group>
+                                <group >
+                                   <field name="stock_type_id" />
+                                  
+                                    <field name="stock_compteur_depart_C" attrs="{'required':[('stock_type_id','=', 8)]}" />
+                                    <field name="stock_compteur_depart_Nb" attrs="{'required':[('stock_type_id','=',8)]}"/>
+                                </group>
+                              <group >
+                                    <field name="stock_compteur_retour_C" attrs="{'required':[('stock_type_id','=', 6)]}"/>
+                                    <field name="stock_compteur_retour_Nb" attrs="{'required':[('stock_type_id','=', 6)]}"/>
+                                </group>
+                            </group>
+                        </page>                       
+                
+
+            </xpath>
+         
          
 
         </field>
