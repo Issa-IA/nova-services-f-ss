@@ -115,6 +115,20 @@ class Stockpikingretour(models.Model):
     stock_sale = fields.Many2one('sale.order', string="Bon de commande de retour")
     stock_bonretour = fields.One2many('bonretour', string="Bon de retour", inverse_name='bonretour_stock_piking')
     stock_type = fields.Selection([('reception', 'reception'), ('retour', 'retour')])
+    
+    ############## new demande
+    stock_type_id = fields.Integer(compute="compute_id_type")
+   
+    @api.depends("picking_type_id")
+    def compute_id_type(self):
+        for rec in self:
+            rec.stock_type_id=rec.picking_type_id.id
+    
+    stock_compteur_depart_Nb = fields.Char(string="Compteur de départ NB")
+    stock_compteur_depart_C = fields.Char(string="Compteur de départ Couleur")
+    stock_compteur_retour_Nb = fields.Char(string="Compteur de départ NB")
+    stock_compteur_retour_C = fields.Char(string="Compteur de départ Couleur")
+    ################
 
 
 class SaleOrderbonretour(models.Model):
