@@ -3,6 +3,26 @@ from odoo import models, fields, api
 
 class   Contactinhertit(models.Model):
     _inherit = "res.partner"
+    
+    ############################# facturation mail    
+    def get_mail(self):
+        for rec in self:
+            if rec.courriel_facturation:
+                rec.courriel_facturation_reel = rec.courriel_facturation
+            else:
+                rec.courriel_facturation_reel = rec.email
+
+    courriel_facturation = fields.Char(string='Courriel de facturation')
+    courriel_facturation_reel = fields.Char(string='Courriel de facturation', compute="get_mail", store=False, readonly=False)
+
+    @api.onchange("courriel_facturation", "email")
+    def recuperecourriel_facturation(self):
+        for rec in self:
+            if rec.courriel_facturation:
+                rec.courriel_facturation_reel = rec.courriel_facturation
+            else:
+                rec.courriel_facturation_reel = rec.email
+    ########################
 
     par_count = fields.Integer(string="Factures", compute="compute_mat_count")
 
