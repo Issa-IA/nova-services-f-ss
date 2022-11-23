@@ -80,7 +80,7 @@ class SaleOrderHerit(models.Model):
                 rec.sale_new_contact = 1
     
     #stat dashbooard
-    sale_objectif_marge = fields.Float(string="% Marge", compute="sale_objectif_marge_compute",digits=(16, 4))
+    sale_objectif_marge = fields.Float(string="% Marge", compute="sale_objectif_marge_compute",digits=(16, 4), index=True, store=True)
     
     @api.depends("x_studio_marge_commerciale","user_id")
     def sale_objectif_marge_compute(self):
