@@ -92,7 +92,7 @@ class SaleOrderHerit(models.Model):
                    rec.sale_objectif_marge=0
             else:
                 rec.sale_objectif_marge=0
-    sale_objectif_marge_stat = fields.Float(string="% Marge", digits=(16, 4), related='sale_objectif_marge')    
+    sale_objectif_marge_stat = fields.Float(string="% Marge", digits=(16, 4), related='sale_objectif_marge',store=False)    
     
     sale_objectif_client = fields.Float(string="% Nombre de clients", compute="sale_objectif_client_compute",digits=(16, 4))
     @api.onchange("sale_new_contact","user_id")
