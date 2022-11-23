@@ -78,6 +78,44 @@ class SaleOrderHerit(models.Model):
         for rec in self:
             if rec.sale_type_client1 == 'nouveau_client':
                 rec.sale_new_contact = 1
+    
+    #stat dashbooard
+    sale_objectif_marge = fields.Float(string="% Marge", compute="sale_objectif_marge_compute",digits=(16, 4))
+    
+    @api.depends("x_studio_marge_commerciale","user_id")
+    def sale_objectif_marge_compute(self):
+        for rec in self:
+            if rec.user_id:
+                if rec.user_id.x_studio_marge>0:                      
+                    rec.sale_objectif_marge= rec.x_studio_marge_commerciale/rec.user_id.x_studio_marge
+                else:
+                   rec.sale_objectif_marge=0
+            else:
+                rec.sale_objectif_marge=0
+            
+    sale_objectif_client = fields.Float(string="% Nombre de clients", compute="sale_objectif_client_compute",digits=(16, 4))
+    @api.onchange("sale_new_contact","user_id")
+    def sale_objectif_client_compute(self):
+        for rec in self:
+            if rec.user_id:
+                if rec.user_id.x_studio_nombre_de_clients > 0:                
+                    rec.sale_objectif_client= rec.sale_new_contact/rec.user_id.x_studio_nombre_de_clients
+                else:
+                   rec.sale_objectif_client=0 
+            else:
+                rec.sale_objectif_client=0
+    sale_objectif_contrat = fields.Float(string="% Nombre de contrats",compute="sale_objectif_contrat_compute",digits=(16, 4))
+    @api.onchange("sale_materiels_vendu","user_id")
+    def sale_objectif_contrat_compute(self):
+        for rec in self:
+            if rec.user_id:
+                if rec.user_id.x_studio_nombre_de_contrats > 0:                
+                    rec.sale_objectif_contrat= rec.sale_materiels_vendu/rec.user_id.x_studio_nombre_de_contrats
+                else:
+                   rec.sale_objectif_contrat=0 
+            else:
+                rec.sale_objectif_contrat=0
+    sale_objectif_affaire = fields.Float(string="% Chiffre d'affaire")
 
     ############ zip street city
     sale_type_client = fields.Selection([('nouveau_client', 'Nouveau client'), ('conversion', 'Conversion'),('additionnel', 'Additionnel')], string='Type de vente')
