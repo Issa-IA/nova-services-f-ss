@@ -72,7 +72,7 @@ class SaleOrderHerit(models.Model):
     sale_date_traitement = fields.Date("Date de traitement",compute="sale_total_date_traitement")
     
     ############ dashboard 
-    sale_new_contact = fields.Integer(string="Nouveau client",default=0)
+    sale_new_contact = fields.Integer(string="New",default=0)
     @api.onchange("sale_type_client1")
     def rcuperenewcontact(self):
         for rec in self:
@@ -82,12 +82,12 @@ class SaleOrderHerit(models.Model):
     #stat dashbooard
     sale_objectif_marge = fields.Float(string="% Marge", compute="sale_objectif_marge_compute",digits=(16, 4))
     
-    @api.depends("x_studio_marge_commerciale","user_id")
+    @api.depends("sale_marge","user_id")
     def sale_objectif_marge_compute(self):
         for rec in self:
             if rec.user_id:
                 if rec.user_id.x_studio_marge>0:                      
-                    rec.sale_objectif_marge= rec.x_studio_marge_commerciale/rec.user_id.x_studio_marge
+                    rec.sale_objectif_marge= rec.sale_marge/rec.user_id.x_studio_marge
                 else:
                    rec.sale_objectif_marge=0
             else:
@@ -122,7 +122,7 @@ class SaleOrderHerit(models.Model):
     sale_type_client = fields.Selection([('nouveau_client', 'Nouveau client'), ('conversion', 'Conversion'),('additionnel', 'Additionnel')], string='Type de vente')
     sale_type_client1 = fields.Selection([('nouveau_client', 'Nouveau client'), ('conversion', 'Conversion'),
                                          ('additionnel', 'Additionnel')], string='Type de vente')
-    sale_materiels_vendu   = fields.Integer(string="Nombre de matériels vendu")    
+    sale_materiels_vendu   = fields.Integer(string="MACHINES")    
     street_client = fields.Char(compute="compute_street_client")
     zip_client = fields.Char(compute="compute_zip_client")
     city_client = fields.Char(compute="compute_city_client")
