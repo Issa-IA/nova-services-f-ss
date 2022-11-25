@@ -56,10 +56,7 @@ class PartnerModelHerit(models.Model):
         for rec in self:
             rec.montant_tot_partenariat_1 = rec.montant_tot_partenariat
     
-    @api.onchange('montant_tot_partenariat_1')
-    def compute_montant_partenariat2(self):
-        for rec in self:
-            rec.montant_tot_partenariat = rec.montant_tot_partenariat_1
+    
        
 
     @api.depends('partenariat_ids.montant_a_regler')
@@ -69,7 +66,7 @@ class PartnerModelHerit(models.Model):
             for rec in par.partenariat_ids:
                 if rec.statut == "Réglé" :
                     amount += rec.montant_a_regler
-            par.montant_rest_regl = par.montant_tot_partenariat - amount
+            par.montant_rest_regl = par.montant_tot_partenariat_1 - amount
 
 class OriginPartner(models.Model):
     _name = 'partner.origin'
