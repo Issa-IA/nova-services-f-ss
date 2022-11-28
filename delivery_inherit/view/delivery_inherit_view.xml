@@ -17,7 +17,18 @@
                              <button name="print_reprise" attrs="{'invisible': [('picking_type_id', '!=', 6)]}" string="Bon de reprise" type="object" class="oe_highlight"/>
                           
                     </xpath>
-                 <xpath expr="//form[1]/sheet[1]/notebook[1]" position="inside">
+                 <xpath expr="//button[@name='action_cancel']" position="attributes" >
+                            <attribute name="attrs">{'invisible':[('state','not in', ('delivery','assigned', 'confirmed', 'draft', 'waiting'))]}</attribute>       
+                  </xpath> 
+                 <xpath expr="//button[@name='action_cancel']" position="attributes" >
+                            <attribute name="attrs">{'invisible':[('state','not in', ('delivery','assigned', 'confirmed', 'draft', 'waiting'))]}</attribute>       
+                  </xpath>     
+                  
+                   <xpath expr="//button[@name='do_unreserve']" position="attributes" >
+                            <attribute name="attrs">{'invisible': ['|', '|', '|', ('picking_type_code', '=', 'incoming'), ('immediate_transfer', '=', True), '&amp;', ('state', 'not in', ('assigned','delivery')), ('move_type', '!=', 'one'), '&amp;', ('state', 'not in', ('assigned', 'confirmed','delivery')), ('move_type', '=', 'one')]}</attribute>       
+                  </xpath> 
+                        
+                        <xpath expr="//form[1]/sheet[1]/notebook[1]" position="inside">
                         <page string="Signature" name="signture_livraison">
                           <group name="groupe1">
                             <group name="left">
