@@ -108,6 +108,7 @@
                     <field name="fleet_Modele" />
                      <field name="fleet_equipement" />
                       <field name="fleet_type_1" />
+                    <field name="fleet_type_materiels_fin" />
                      <field name="fleet_installation" />
                      <field name="fleet_commentaires" />
                     <field name="comp_couleur_depart" />
