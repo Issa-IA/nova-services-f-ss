@@ -46,6 +46,7 @@ class TypeLeaser(models.Model):
 class FleetContINHERIT(models.Model):
     _inherit = 'fleet.vehicle'
     fleet_type_materiel=  fields.Char(string="Type de matériel")
+    fleet_type_materiels_fin = fields.Selection([('print', 'Print'), ('sauvegarde', 'Sauvegarde'), ('solution', 'Solution'), ('ecran', 'Ecran')],string='Type de matériel', related="fleet_Modele.type_materiels")
     image_materiel  = fields.Binary()
     model_id = fields.Many2one(required=False )
     fleet_dossier_devis = fields.Char(string='Dossier N°')
