@@ -12,7 +12,7 @@ class PartnerInvoiceHerit(models.Model):
     moyen_de_paiement= fields.Selection([('prelevement', 'Prélèvement'),('chorus', 'Chorus'),('autres', 'Autres')],default='prelevement')
     goup_commerc_ok = fields.Char('Type Facture', compute="compute_type_facture")
     goup_commerc_ok_1 = fields.Char('KDFM', compute="compute_type_kdfm")
-    statut_compte' = fields.Selection([('normale', 'Normale'),('impayé', 'Impayé')], string='statut de compte',default='normale' )
+    
     
    
     @api.depends('x_studio_type_facture')
