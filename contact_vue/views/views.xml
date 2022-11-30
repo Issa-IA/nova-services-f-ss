@@ -24,13 +24,9 @@
                 </button>
             </xpath>
 
-            <!--
-            <xpath expr="//form/sheet/div[1]" position="attributes">
-                <attribute name="invisible">True</attribute>
+            <xpath expr="//page[@name='contact_addresses']/field/kanban/templates/t/div/div[2]/field[@name='name']" position="after">                
+                <div t-if="record.title.raw_value"><field name="title"/></div>
             </xpath>
-            -->
-
-
 
     </field>
     </record>
