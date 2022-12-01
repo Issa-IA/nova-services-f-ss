@@ -116,8 +116,8 @@ class Stockpikingretour(models.Model):
     stock_bonretour = fields.One2many('bonretour', string="Bon de retour", inverse_name='bonretour_stock_piking')
     stock_type = fields.Selection([('reception', 'reception'), ('retour', 'retour')])
     
-    #############blockage livraison
-    stock_block = fields.Boolean(string="Statut de bon livraison", default=False)
+    #############blockage livraison    
+    stock_block = fields.Selection([('Normale', 'Normale'), ('Impaye', 'Impayé')],string="Statut de bon livraison", related="partner_id.x_studio_statut_de_compte")    
     
     ############## new demande
     stock_type_id = fields.Integer(compute="compute_id_type")
