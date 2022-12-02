@@ -27,6 +27,7 @@
 
         'views/fleet_vehicle_model.xml',
         'views/vehicle.xml',
+        'views/typeleaser.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
