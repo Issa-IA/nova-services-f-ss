@@ -119,6 +119,16 @@ class Stockpikingretour(models.Model):
     #############blockage livraison    
     stock_block = fields.Selection([('Normale', 'Normale'), ('Impaye', 'Impayé')],string="Statut de bon livraison", related="partner_id.x_studio_statut_de_compte")    
     
+    stock_block_yes = fields.Selection([('Normale', 'Normale'), ('Impaye', 'Impayé')],string="Statut de bon livraison ok", compute="get_statu_compute_partner")
+   
+    @api.depends("stock_block")
+    def get_statu_compute_partner(self):
+        for rec in self:
+            if rec.picking_type_id.id == 2:
+                rec.stock_block_yes = rec.stock_block
+            else:
+                rec.stock_block_yes = 'Normale'
+    
     ############## new demande
     stock_type_id = fields.Integer(compute="compute_id_type")
    
