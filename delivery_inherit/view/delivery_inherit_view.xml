@@ -11,7 +11,7 @@
                     </xpath>
                     <xpath expr="//button[@name='187']" position="after" >
                              <button name="print_delivery" attrs="{'invisible': ['|',('state', '=', 'delivery'),('picking_type_id', '!=', 2)]}" string="Bon livraison" type="object" class="oe_highlight"/>
-                             <button name="print_delivery" attrs="{'invisible': ['|',('state', '!=', 'delivery'),('picking_type_id', '!=', 2)]}" string="Bon livraison" type="object"/>
+                        
                     </xpath>
                          <xpath expr="//button[@name='print_delivery']" position="after" >
                              <button name="print_reprise" attrs="{'invisible': [('picking_type_id', '!=', 6)]}" string="Bon de reprise" type="object" class="oe_highlight"/>
