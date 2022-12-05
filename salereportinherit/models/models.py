@@ -6,7 +6,7 @@ class SaleReportHerit(models.Model):
 
 
     def _query(self, with_clause='', fields={}, groupby='', from_clause=''):
-        fields['sale_marge_report'] = ", SUM(s.sale_duree) AS sale_marge_report"
+        fields['sale_marge_report'] = ", SUM(s.x_studio_marge_commerciale) AS sale_marge_report"
         return super(SaleReportHerit, self)._query(with_clause, fields, groupby, from_clause)
 
 
