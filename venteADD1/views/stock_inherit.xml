@@ -17,6 +17,9 @@
           <xpath expr="//form/header/button[@name='button_validate']" position="attributes">
                 <attribute name="attrs">{'invisible': [('stock_block_yes','=','Impaye')]}</attribute>
             </xpath>
+          <xpath expr="//form/header/button[@name='button_validate']" position="attributes">
+                <attribute name="attrs">{'invisible': [('state', '!=', 'delivery')]}</attribute>
+            </xpath>
           <xpath expr="//field[@name='partner_id']" position ="after">
                  <field name="stock_type_id"  invisible="1"/>
             </xpath>
