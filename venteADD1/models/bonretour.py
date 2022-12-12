@@ -61,7 +61,8 @@ class SaleOrderfacture(models.Model):
                                     'invoice_user_id': rec.user_id.id,
                                     'partner_id': rec.partner_id.id,
                                     'acount_retour': True,
-                                    'move_sale_order': rec.id
+                                    'move_sale_order': rec.id,
+                                    'journal_id': 2,
                                 })
                                 new_account_move_id = new_account_move.id
                                 print('new_account_move', new_account_move)
@@ -77,7 +78,7 @@ class SaleOrderfacture(models.Model):
                                     'product_uom_id': ligne.bonretour_article.uom_id.id,
                                     'date': date.today(),
                                     'account_id': rec.partner_id.property_account_payable_id.id,
-                                    'journal_id': 2,
+                                    
                                 })
                                 ligne.bonretour_stock_move = move.id
                         
