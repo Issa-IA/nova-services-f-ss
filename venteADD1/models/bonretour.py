@@ -66,6 +66,7 @@ class SaleOrderfacture(models.Model):
                                 })
                                 new_account_move_id = new_account_move.id
                                 print('new_account_move', new_account_move)
+                                break
                         for ligne in rec.sale_bonretour:
                             if ligne.bonretour_montant > 0:
                                 move=self.env['account.move.line'].sudo().with_context(check_move_validity=False).create({
