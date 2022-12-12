@@ -65,7 +65,7 @@ class SaleOrderfacture(models.Model):
                                     'journal_id': 1,
                                 })
                                 new_account_move_id = new_account_move.id
-                                print('new_account_move', new_account_move)
+                                print('new_account_move', new_account_move)                                
                                 break
                         for ligne in rec.sale_bonretour:
                             if ligne.bonretour_montant > 0:
@@ -75,13 +75,13 @@ class SaleOrderfacture(models.Model):
                                     'product_id': ligne.bonretour_article.id,
                                     'move_id': new_account_move_id,
                                     'quantity': 1,
-                                    'price_unit': 1,
-                                    'product_uom_id': 1,
+                                    'price_unit':ligne.bonretour_montant,
+                                    'product_uom_id': ligne.bonretour_article.uom_id.id,
                                     'date': date.today(),
-                                    'account_id': 1,
+                                    'account_id': rec.partner_id.property_account_payable_id.id,
                                     
                                 })
-                                ligne.bonretour_stock_move = move.id
+                                
                         
 
 
