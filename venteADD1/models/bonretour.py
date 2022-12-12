@@ -62,7 +62,7 @@ class SaleOrderfacture(models.Model):
                                     'partner_id': rec.partner_id.id,
                                     'acount_retour': True,
                                     'move_sale_order': rec.id,
-                                    'journal_id': 2,
+                                    'journal_id': 1,
                                 })
                                 new_account_move_id = new_account_move.id
                                 print('new_account_move', new_account_move)
