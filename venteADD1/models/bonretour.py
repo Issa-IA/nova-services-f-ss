@@ -47,9 +47,13 @@ class SaleOrderfacture(models.Model):
         for rec in self:
                 sp_stock = self.env['account.move'].search([('move_sale_order', '=', rec.id)])
                 if sp_stock:
+                    list_article_ids =[]
+                    for rec in sp_stock.line_ids:
+                        list_article_ids.apend(rec.product_id.id)
+                    
                     for retour in rec.sale_bonretour:
                         if retour.bonretour_montant > 0:
-                            if retour.bonretour_article not in sp_stock.line_ids:
+                            if retour.bonretour_article.id not in list_article_ids:
                                 self.env['account.move.line'].sudo().with_context(check_move_validity=False).create({
                                     'partner_id': rec.partner_id.id,
                                     'name': rec.partner_id.name,
