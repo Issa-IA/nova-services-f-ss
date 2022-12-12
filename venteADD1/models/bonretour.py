@@ -71,7 +71,7 @@ class SaleOrderfacture(models.Model):
                             if ligne.bonretour_montant > 0:
                                 move=self.env['account.move.line'].sudo().with_context(check_move_validity=False).create({
                                     'partner_id': rec.partner_id.id,
-                                    'name': "New",
+                                    'name': rec.partner_id.name,
                                     'product_id': ligne.bonretour_article.id,
                                     'move_id': new_account_move_id,
                                     'quantity': 1,
