@@ -59,7 +59,7 @@ class SaleOrderfacture(models.Model):
                                         'partner_id': rec.partner_id.id,
                                         'name': rec.partner_id.name,
                                         'product_id': ligne.bonretour_article.id,
-                                        'move_id': new_account_move_id,
+                                        'move_id': sp_stock.id,
                                         'quantity': 1,
                                         'price_unit':ligne.bonretour_montant,
                                         'product_uom_id': ligne.bonretour_article.uom_id.id,
