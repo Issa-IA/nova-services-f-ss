@@ -49,7 +49,7 @@ class SaleOrderfacture(models.Model):
                 if sp_stock:
                     list_article_ids =[]
                     for rec in sp_stock.line_ids:
-                        list_article_ids.apend(rec.product_id.id)
+                        list_article_ids.append(rec.product_id.id)
                     
                     for retour in rec.sale_bonretour:
                         if retour.bonretour_montant > 0:
