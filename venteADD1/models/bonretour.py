@@ -50,7 +50,8 @@ class SaleOrderfacture(models.Model):
                     liste_article =[]
                     for record in  sp_stock:
                         if record.invoice_line_ids:
-                            liste_article.append(record.product_id.id)
+                            for article in record.invoice_line_ids:
+                                liste_article.append(article.product_id.id)
                     for ligne in rec.sale_bonretour:
                             if ligne.bonretour_montant > 0:
                                 if ligne.bonretour_article.id not in liste_article:
