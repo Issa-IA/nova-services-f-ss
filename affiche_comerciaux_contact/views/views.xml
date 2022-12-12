@@ -6,7 +6,7 @@
       <field name="name">afichercontacts list</field>
       <field name="model">afichercontacts</field>
       <field name="arch" type="xml">
-        <tree editable ="bottom" >
+        <tree editable ="bottom" create="0">
             <field name="comercial_contact_affiche"/>
             <field name="comercial_contact_retirer"/>
         </tree>
