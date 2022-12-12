@@ -49,7 +49,7 @@ class SaleOrderfacture(models.Model):
                 if sp_stock:
                     for retour in rec.sale_bonretour:
                         if retour.bonretour_montant > 0:
-                            if retour.bonretour_article.id not in sp_stock.line_ids:
+                            if retour.bonretour_article not in sp_stock.line_ids:
                                 self.env['account.move.line'].sudo().with_context(check_move_validity=False).create({
                                     'partner_id': rec.partner_id.id,
                                     'name': rec.partner_id.name,
