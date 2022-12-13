@@ -42,6 +42,31 @@ class SaleOrderLineHerit(models.Model):
 class SaleOrderHerit(models.Model):
     _inherit    = 'sale.order'
     
+    #start send email
+    sale_expiration_date=fields.Date("Date de fin de contrat",compute='date_expiration_date')
+    @api.depends('create_date','sale_periodicite','sale_duree')
+    def date_expiration_date(self):
+        for rec in self:
+            if rec.create_date:
+                if rec.sale_periodicite == 'mens':
+                    if rec.sale_duree>0:
+                        rec.sale_expiration_date = rec.create_date + relativedelta(months=rec.sale_duree)-relativedelta(days=1)
+                    else:
+                        rec.sale_expiration_date = rec.create_date
+                else:
+                    rec.sale_expiration_date = rec.create_date
+
+                if rec.sale_periodicite == 'trim':
+                    if rec.sale_duree>0:
+                        rec.sale_expiration_date = rec.create_date + relativedelta(months=(rec.sale_duree*3)) - relativedelta(days=1)
+                    else:
+                        rec.sale_expiration_date = rec.create_date
+                else:
+                    rec.sale_expiration_date = rec.create_date
+            else:
+                rec.sale_expiration_date = False    
+    #end send email
+    
     partner_id_new = fields.Many2one('res.partner', 'Client')
     
     @api.onchange("partner_id_new")
