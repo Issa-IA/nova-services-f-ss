@@ -20,7 +20,7 @@ class Aficherlalistecontacts(models.Model):
         print("bonjour tout le monde")
         your_group = self.env.ref('affiche_comerciaux_contact.acces_contact_user')
         users = self.env['res.users'].search([])
-        users_Technicien = self.env.ref('droits_d_acces.group_Technicien_contact').users.ids
+        users_Technicien = self.env.ref('base.group_user').users.ids
         print("users", users)
         print("users_Technicien",users_Technicien)
 
