@@ -5,7 +5,7 @@ import warnings
 class Aficherlalistecontacts(models.Model):
     _name = 'afichercontacts'
     _description = ' client fleet seriel article'
-    comercial_contact_affiche = fields.Boolean(default=False,string="Aficher la liste des contacts")
+    comercial_contact_affiche = fields.Boolean(default=False,string="Afficher la liste des contacts")
     comercial_contact_retirer = fields.Boolean(default=False, string="Masquer la liste des contacts")
 
     def name_get(self):
