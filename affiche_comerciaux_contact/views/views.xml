@@ -35,7 +35,7 @@
     </record>
 
      <record model="ir.actions.act_window" id="list_contact_day_window_1">
-      <field name="name">Tous les contacts</field>
+      <field name="name">RTP</field>
       <field name="res_model">res.partner</field>
       <field name="view_mode">tree,form</field>
      </record>
@@ -43,7 +43,7 @@
       groups="affiche_comerciaux_contact.acces_contact_user"    action="list_contact_day_window_1" sequence="92"/>
 
     <record model="ir.actions.act_window" id="type_Aficher_window">
-      <field name="name">Aficher la liste</field>
+      <field name="name">Afficher la liste</field>
       <field name="res_model">afichercontacts</field>
       <field name="view_mode">tree,form</field>
     </record>
