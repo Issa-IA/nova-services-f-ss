@@ -31,11 +31,10 @@ class Aficherlalistecontacts(models.Model):
                         'users': [(4, user.id)]
                     })
 
-                    warning = {
-                        'title': _("Contacts"),
-                        'message': 'La liste des contacts est disponible pour les commerciaux',
+        warning = {'title': _("Contacts"),
+                       'message': 'La liste des contacts est disponible pour les commerciaux',
                     }
-                    return {'warning': warning}
+        return {'warning': warning}
 
 
     @api.onchange("comercial_contact_retirer")
@@ -50,11 +49,11 @@ class Aficherlalistecontacts(models.Model):
                     your_group.write({
                         'users': [(3, user.id)]
                     })
-                    warning = {
+        warning = {
                         'title': _("Contacts"),
                         'message': 'La liste des contacts a été retiré pour les commerciaux',
                     }
-                    return {'warning': warning}
+        return {'warning': warning}
 
 
 
